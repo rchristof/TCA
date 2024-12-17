@@ -11,7 +11,7 @@ public class TestEntity {
     public TestEntity(int totalItems, int frequency, int soa, List<HitEntity> hitEntities) {
         this.totalItems = totalItems;
         this.frequency = frequency;
-        this.setSoa(soa);
+        this.soa = soa;
         this.hitEntities = hitEntities;
     }
 
