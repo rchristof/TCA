@@ -4,91 +4,57 @@ import br.com.guardiaosistemas.tca.execucao.consts.C;
 
 public class HitEntity {
 
-	private String type; // B=ballon, S=star
-	private String frequency; // L low, H high
-	private int time; // 1, 2 or 4 seconds
-	private int speed = 0; // Miliseconds
-	private boolean hit; // 0
-	
-	public HitEntity() {
-		super();
-	}
+    private String type; // B = Balloon (não-alvo), S = Star (alvo)
+    private int time;    // SOA em segundos
+    private int speed = 0; // Milissegundos (tempo de resposta)
+    private boolean hit = false; // true se o jogador acertar o estimulo
 
-	public HitEntity(String type, String frequency, int time) {
-		this();
-		this.type = type;
-		this.frequency = frequency;
-		this.time = time;
-	}
+    public HitEntity(String type, int time) {
+        this.type = type;
+        this.time = time;
+    }
 
-	public HitEntity(String type, int speed, boolean hit) {
-		this();
-		this.type = type;
-		this.speed = speed;
-		this.hit = hit;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public int getTime() {
+        return time;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public int getSpeed() {
+        return speed;
+    }
 
-	public String getFrequency() {
-		return frequency;
-	}
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
-	public void setFrequency(String frequency) {
-		this.frequency = frequency;
-	}
+    public boolean isHit() {
+        return hit;
+    }
 
-	public int getTime() {
-		return time;
-	}
+    public void setHit(boolean hit) {
+        this.hit = hit;
+    }
+    
+    public boolean isOk() {
+        return (type.equals(C.T_STAR) && hit) || (type.equals(C.T_BALLON) && !hit);
+    }
+    
+    public int getCode() {
+        if (C.T_STAR.equals(type)) { // Alvo (S)
+            return hit ? 1 : 0; // 1 = Alvo acertado, 0 = Alvo não acertado
+        } else { // Não-alvo (B)
+            return hit ? 3 : 2; // 3 = Não-alvo errado, 2 = Não-alvo correto
+        }
+    }
 
-	public void setTime(int time) {
-		this.time = time;
-	}
 
-	public int getSpeed() {
-		return speed;
-	}
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
-	public boolean isHit() {
-		return hit;
-	}
-
-	public void setHit(boolean hit) {
-		this.hit = hit;
-	}
-
-	@Override
-	public String toString() {
-		return "HitEntity [type=" + type + ", frequency=" + frequency + ", time=" + time + ", speed=" + speed + ", hit="
-				+ hit + "]";
-	}
-	
-	public void tookShot(int speed) {
-		this.hit = true;
-		this.speed = speed;
-	}
-	
-	public boolean isOk() {
-		return (type.equals(C.T_STAR) && hit) || (type.equals(C.T_BALLON) && !hit);
-	}
-	
-	public int getCode() {
-		if (C.T_STAR.equals(type)) {
-			return hit ? 1 : 0;
-		} else {
-			return hit ? 3 : 2;
-		}
-	}
-		
+    @Override
+    public String toString() {
+        return "HitEntity [type=" + type + ", time=" + time + ", speed=" + speed + ", hit=" + hit + "]";
+    }
 }
+

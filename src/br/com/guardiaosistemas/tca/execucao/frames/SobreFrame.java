@@ -1,19 +1,17 @@
 package br.com.guardiaosistemas.tca.execucao.frames;
 
+import br.com.guardiaosistemas.tca.execucao.consts.C;
+import bundle.Msg;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
-import br.com.guardiaosistemas.tca.execucao.consts.C;
-import bundle.Msg;
 
 public class SobreFrame extends JDialog {
 

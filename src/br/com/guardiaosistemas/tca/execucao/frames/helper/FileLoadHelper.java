@@ -1,12 +1,10 @@
 package br.com.guardiaosistemas.tca.execucao.frames.helper;
 
+import bundle.Msg;
 import java.awt.Component;
 import java.io.File;
-
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import bundle.Msg;
 
 public class FileLoadHelper {
 	

@@ -1,5 +1,6 @@
 package br.com.guardiaosistemas.tca.execucao.frames.helper;
 
+import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
 
 public class LoadDataHelper {
 	

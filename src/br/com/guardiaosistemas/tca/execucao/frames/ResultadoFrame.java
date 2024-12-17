@@ -1,5 +1,8 @@
 package br.com.guardiaosistemas.tca.execucao.frames;
 
+import br.com.guardiaosistemas.tca.execucao.frames.helper.ResultDataEntity;
+import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
+import bundle.Msg;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,7 +13,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,10 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
-
-import br.com.guardiaosistemas.tca.execucao.frames.helper.ResultDataEntity;
-import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
-import bundle.Msg;
 
 public class ResultadoFrame extends JDialog {
 

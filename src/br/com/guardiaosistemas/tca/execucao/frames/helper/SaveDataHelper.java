@@ -1,10 +1,9 @@
 package br.com.guardiaosistemas.tca.execucao.frames.helper;
 
-import java.text.SimpleDateFormat;
-
 import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
 import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
 import bundle.Msg;
+import java.text.SimpleDateFormat;
 
 public class SaveDataHelper {
 

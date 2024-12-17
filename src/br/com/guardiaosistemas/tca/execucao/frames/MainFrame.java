@@ -1,11 +1,13 @@
 package br.com.guardiaosistemas.tca.execucao.frames;
 
+import br.com.guardiaosistemas.tca.execucao.FrameManager;
+import br.com.guardiaosistemas.tca.execucao.consts.C;
+import bundle.Msg;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -15,10 +17,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.SwingConstants;
-
-import br.com.guardiaosistemas.tca.execucao.FrameManager;
-import br.com.guardiaosistemas.tca.execucao.consts.C;
-import bundle.Msg;
 
 public class MainFrame extends JFrame {
 

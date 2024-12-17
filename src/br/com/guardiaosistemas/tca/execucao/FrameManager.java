@@ -11,11 +11,12 @@ import br.com.guardiaosistemas.tca.execucao.frames.helper.ExecucaoTesteFrameHelp
 import br.com.guardiaosistemas.tca.execucao.frames.helper.ResultadoFrameHelper;
 import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
 import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
+import br.com.guardiaosistemas.tca.execucao.model.entity.TestEntity;
 
 public class FrameManager {
 	
 	private MainFrame mainFrame;
-	private ExecucaoTesteFrameHelper execucaoTesteFrameHelper;
+//	private ExecucaoTesteFrameHelper execucaoTesteFrameHelper;
 	private PacienteFrame pacienteFrame;
 	private SelecaoFrame selecaoFrame;
 	private SobreFrame sobreFrame;
@@ -33,34 +34,31 @@ public class FrameManager {
 	}
 	
 	public synchronized void showPacienteFrame(PatientEntity patient) {
-//		if (pacienteFrame == null) {
-			pacienteFrame = new PacienteFrame((p) -> showSelecaoFrame(p));
-//		}
-//		System.out.println(patient);
-		if (patient != null) {
-			pacienteFrame.setPatient(patient);
-		}
-		
-		pacienteFrame.setVisible(true);
-//		System.out.println(pacienteFrame.getParent().getName());
+	    pacienteFrame = new PacienteFrame((p, t) -> {
+	        showSelecaoFrame(p); // Passa o paciente para a próxima etapa
+	    });
+
+	    if (patient != null) {
+	        pacienteFrame.setPatient(patient);
+	    }
+	    pacienteFrame.setVisible(true);
 	}
-	
+
 	public synchronized void showSelecaoFrame(PatientEntity patient) {
-//		if (selecaoFrame == null) {
-			selecaoFrame = new SelecaoFrame((p) -> showExecucaoTesteFrame(p), null);
-//		}
-		selecaoFrame.setPatient(patient);
-		selecaoFrame.setVisible(true);
-//		System.out.println(selecaoFrame.getParent().getName());
+	    selecaoFrame = new SelecaoFrame((p, t) -> {
+	        showExecucaoTesteFrame(p, t); // Inicia o teste com TestEntity
+	    }, null);
+
+	    selecaoFrame.setPatient(patient);
+	    selecaoFrame.setVisible(true);
 	}
+
+
 	
-	public synchronized void showExecucaoTesteFrame(PatientEntity patient) {
-//		if (execucaoTesteFrame == null) {
-			execucaoTesteFrameHelper = new ExecucaoTesteFrameHelper(patient);
-//		}
-		
-		execucaoTesteFrameHelper.show();
+	public void showExecucaoTesteFrame(PatientEntity patient, TestEntity testEntity) {
+	    new ExecucaoTesteFrameHelper(patient, testEntity).show();
 	}
+
 	
 	public synchronized void showResultadoFrame(PatientEntity patient, List<HitEntity> hitList) {
 		resultadoFrameHelper = new ResultadoFrameHelper(patient, hitList);

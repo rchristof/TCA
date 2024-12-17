@@ -11,11 +11,13 @@ import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -24,7 +26,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import br.com.guardiaosistemas.tca.execucao.delegate.ExecuteDelegate;
+import br.com.guardiaosistemas.tca.execucao.frames.helper.DataTestHelper;
+import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
 import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
+import br.com.guardiaosistemas.tca.execucao.model.entity.TestEntity;
 import bundle.Msg;
 
 public class SelecaoFrame extends JDialog {
@@ -34,6 +39,10 @@ public class SelecaoFrame extends JDialog {
 	private PatientEntity patient;
 	private ExecuteDelegate avancar;
 //	private ExecuteDelegate voltar;
+	private int totalAlvos = 24;
+	private int frequency = 80;
+	private int soa = 1;
+
 	
 //	private JPanel contentPane;
 
@@ -41,14 +50,15 @@ public class SelecaoFrame extends JDialog {
 	 * Create the frame.
 	 */
 	public SelecaoFrame(ExecuteDelegate avancar, ExecuteDelegate voltar) {
+		this.avancar = avancar;
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent arg0) {
-				System.out.println("I am back");
+//				System.out.println("I am back");
 //				SelecaoFrame.this.voltar.executar(patient);
 			}
 		});
-		this.avancar = avancar;
+		
 //		this.voltar = voltar;
 		
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -113,40 +123,61 @@ public class SelecaoFrame extends JDialog {
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		flowLayout.setHgap(10);
 		pnlBotoes.setBackground(SystemColor.control);
+		pnlBotoes.setLayout(new GridLayout(4, 5, 0, 5));
 		
-		JButton btn1Minutos = new JButton(Msg.get("selecao.minutos"));
-		btn1Minutos.setIcon(new ImageIcon(SelecaoFrame.class.getResource("/assets/ic_time_1m30s-32.png")));
-		btn1Minutos.addActionListener((e) -> iniciarTeste(1));
-		pnlBotoes.add(btn1Minutos);
+		JButton btn80Frequencia = new JButton("80% Frequencia");
+		btn80Frequencia.addActionListener(e -> frequency = 80);
+		pnlBotoes.add(btn80Frequencia);
 		
-		JButton btn5Minutos = new JButton(Msg.get("selecao.minutos"));
-		btn5Minutos.addActionListener((e) -> iniciarTeste(5));
-		btn5Minutos.setIcon(new ImageIcon(SelecaoFrame.class.getResource("/assets/ic_time_5-32.png")));
-		pnlBotoes.add(btn5Minutos);
+		JButton btn20Frequencia = new JButton("20% Frequencia");
+		btn20Frequencia.addActionListener(e -> frequency = 20);
+		pnlBotoes.add(btn20Frequencia);
 		
-		JButton btn10Minutos = new JButton(Msg.get("selecao.minutos"));
-		btn10Minutos.addActionListener((e) -> iniciarTeste(10));
-		btn10Minutos.setIcon(new ImageIcon(SelecaoFrame.class.getResource("/assets/ic_time_10-32.png")));
-		pnlBotoes.add(btn10Minutos);
+		pnlBotoes.add(new JLabel());
 		
-		JButton btn15Minutos = new JButton(Msg.get("selecao.minutos"));
-		btn15Minutos.addActionListener((e) -> iniciarTeste(15));
-		btn15Minutos.setIcon(new ImageIcon(SelecaoFrame.class.getResource("/assets/ic_time_15-32.png")));
-		pnlBotoes.add(btn15Minutos);
+		JButton btn1Tempo = new JButton("1s");
+		btn1Tempo.addActionListener(e -> soa = 1);
+		pnlBotoes.add(btn1Tempo);
+		
+		JButton btn2Tempo = new JButton("2s");
+		btn2Tempo.addActionListener(e -> soa = 2);
+		pnlBotoes.add(btn2Tempo);
+		
+		JButton btn4Tempo = new JButton("4s");
+		btn4Tempo.addActionListener(e -> soa = 4);
+		pnlBotoes.add(btn4Tempo);
+		
+		JButton btn24Alvos = new JButton("24 Alvos");
+		btn24Alvos.addActionListener(e -> totalAlvos = 24);
+		pnlBotoes.add(btn24Alvos);
+		
+		JButton btn48Alvos = new JButton("48 Alvos");
+		btn48Alvos.addActionListener(e -> totalAlvos = 48);
+		pnlBotoes.add(btn48Alvos);
+		
+		JButton btn72Alvos = new JButton("72 Alvos");
+		btn72Alvos.addActionListener(e -> totalAlvos = 72);
+		pnlBotoes.add(btn72Alvos);
+		
+		pnlBotoes.add(new JLabel());
+		
+		JButton btnIniciar = new JButton("Iniciar Teste");
+		btnIniciar.addActionListener(e -> {
+		    try {
+		        List<HitEntity> stimuliList = DataTestHelper.generateStimuliList(totalAlvos, frequency, soa);
 
-		JTextField customTimeField = new JTextField(5);
-		pnlBotoes.add(customTimeField);
+		        TestEntity testEntity = new TestEntity(totalAlvos, frequency, soa, stimuliList);
 
-		JButton btnCustomTime = new JButton("Custom Time");
-		btnCustomTime.addActionListener((e) -> {
-    		try {
-        		int customTime = Integer.parseInt(customTimeField.getText());
-        		iniciarTeste(customTime);
-    		} catch (NumberFormatException ex) {
-        		System.out.println("Invalid time input. Please enter a valid number.");
-    		}
+		        avancar.executar(patient, testEntity);
+		        setVisible(false);
+		    } catch (Exception ex) {
+		        ex.printStackTrace();
+		        JOptionPane.showMessageDialog(this, "Erro ao iniciar o teste.");
+		    }
 		});
-		pnlBotoes.add(btnCustomTime);
+		pnlBotoes.add(btnIniciar);
+		
+		pnlBotoes.add(new JLabel());
 
 		JPanel pnlTitulo = new JPanel();
 		pnlGeral.add(pnlTitulo, BorderLayout.NORTH);
@@ -176,11 +207,11 @@ public class SelecaoFrame extends JDialog {
 		setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
 	}
 	
-	private void iniciarTeste(int minutos) {
-		patient.setExecutionTime(minutos);
-		avancar.executar(patient);
-		setVisible(false);
-	}
+//	private void iniciarTeste(int minutos) {
+//		patient.setExecutionTime(minutos);
+//		avancar.executar(patient);
+//		setVisible(false);
+//	}
 
 	public PatientEntity getPatient() {
 		return patient;

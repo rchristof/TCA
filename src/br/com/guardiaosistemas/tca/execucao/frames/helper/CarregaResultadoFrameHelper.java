@@ -1,13 +1,11 @@
 package br.com.guardiaosistemas.tca.execucao.frames.helper;
 
+import br.com.guardiaosistemas.tca.execucao.frames.ResultadoFrame;
+import bundle.Msg;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-
 import javax.swing.JOptionPane;
-
-import br.com.guardiaosistemas.tca.execucao.frames.ResultadoFrame;
-import bundle.Msg;
 
 public class CarregaResultadoFrameHelper {
 	

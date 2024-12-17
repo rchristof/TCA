@@ -1,12 +1,11 @@
 package br.com.guardiaosistemas.tca.execucao.frames.helper;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.List;
-
 import br.com.guardiaosistemas.tca.execucao.frames.ResultadoFrame;
 import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
 import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.List;
 
 public class ResultadoFrameHelper {
 

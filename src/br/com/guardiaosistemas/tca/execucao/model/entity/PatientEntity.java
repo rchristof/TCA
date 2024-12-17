@@ -13,7 +13,6 @@ public class PatientEntity implements Serializable {
 	private String gender; // M = Male / F = Female
 	private String hand; // L = Left / R = Right
 	private Date testDate = new Date();
-	private Integer executionTime; // 5, 10 or 15 minutes
 	
 	public PatientEntity() {
 		super();
@@ -56,18 +55,11 @@ public class PatientEntity implements Serializable {
 		this.testDate = testDate;
 	}
 
-	public Integer getExecutionTime() {
-		return executionTime;
-	}
-
-	public void setExecutionTime(Integer executionTime) {
-		this.executionTime = executionTime;
-	}
 
 	@Override
 	public String toString() {
 		return "PatientEntity [name=" + name + ", age=" + age + ", instruction=" + instruction + ", gender=" + gender
-				+ ", hand=" + hand + ", testDate=" + testDate + ", executionTime=" + executionTime + "]";
+				+ ", hand=" + hand + ", testDate=" + testDate + ", executionTime=" + "]";
 	}
 
 }

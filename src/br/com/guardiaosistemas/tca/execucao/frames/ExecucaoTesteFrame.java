@@ -1,5 +1,6 @@
 package br.com.guardiaosistemas.tca.execucao.frames;
 
+import br.com.guardiaosistemas.tca.execucao.frames.helper.ExecucaoTesteFrameHelper;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -9,15 +10,12 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
-import br.com.guardiaosistemas.tca.execucao.frames.helper.ExecucaoTesteFrameHelper;
 
 public class ExecucaoTesteFrame extends JDialog {
 

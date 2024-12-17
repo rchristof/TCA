@@ -32,6 +32,7 @@ import javax.swing.border.TitledBorder;
 import br.com.guardiaosistemas.tca.execucao.consts.C;
 import br.com.guardiaosistemas.tca.execucao.delegate.ExecuteDelegate;
 import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
+import br.com.guardiaosistemas.tca.execucao.model.entity.TestEntity;
 import bundle.Msg;
 
 public class PacienteFrame extends JDialog {
@@ -259,15 +260,18 @@ public class PacienteFrame extends JDialog {
 	}
 
 	private void save() {
-		try {
-			validateForm();
-			setVisible(false);
-			avancar.executar(patient);
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), Msg.get("paciente.validacao"),
-					JOptionPane.ERROR_MESSAGE);
-		}
+	    try {
+	        validateForm();
+	        setVisible(false);
+
+	        TestEntity testEntity = new TestEntity(0, 0, 0, null);
+
+	        avancar.executar(patient, testEntity);
+	    } catch (Exception e) {
+	        JOptionPane.showMessageDialog(this, e.getMessage(), Msg.get("paciente.validacao"), JOptionPane.ERROR_MESSAGE);
+	    }
 	}
+
 
 	public PatientEntity getPatient() {
 		return patient;

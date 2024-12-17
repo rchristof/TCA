@@ -1,10 +1,9 @@
 package br.com.guardiaosistemas.tca.execucao.frames.task;
 
-import java.util.List;
-
 import br.com.guardiaosistemas.tca.execucao.delegate.ReturnListDelegate;
 import br.com.guardiaosistemas.tca.execucao.frames.helper.ExecucaoTesteFrameHelper;
 import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
+import java.util.List;
 
 public class ExecTestTask implements Runnable {
 
@@ -44,13 +43,17 @@ public class ExecTestTask implements Runnable {
 	
 
 	private void executarTest() {
-		for(HitEntity hit : testList) {
-			helper.setInitHit(hit);
-			waitAMoment(400);
-			helper.setIconNone();
-			waitAMoment(hit.getTime()*1000 - 400);
-		}
+	    for (HitEntity hit : testList) {
+	        helper.setInitHit(hit);
+	        waitAMoment(400);
+	        helper.setIconNone();
+	        waitAMoment((hit.getTime() * 1000) - 400);
+	        
+//	        System.out.println("Código do estímulo: " + hit.getCode()); // logs do acerto de cada alvo
+	    }
 	}
+
+
 	
 	private void waitAMoment(int millis) {
 		try {
