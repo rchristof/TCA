@@ -1,0 +1,69 @@
+Java Job
+
+-------------------------------------------------------//-------------------------------------------------------//-----------------------------------------------------
+Manusear o tempo do teste, a podermos programar os tempos do teste.
+
+Poder escolher o tempo total do teste e os blocos que serão utilizados:
+15 min são 6 blocos.
+1 bloco = 2,5 min = 150 segundos
+
+Poder escolher se vai escolher blocos de alta ou baixa frequência.
+
+Calcular as probabilidades de alvos.
+
+Código fonte em Java
+-------------------------------------------------------//-------------------------------------------------------//-----------------------------------------------------
+Excel sistema de Mascara
+-------------------------------------------------------//-------------------------------------------------------//-----------------------------------------------------
+Para permitir que o aplicador defina um tempo de teste personalizado, vamos fazer as seguintes alterações:
+
+Atualizar o Frame de Seleção de Tempo:
+
+Na interface de usuário onde os tempos pré-definidos estão selecionados, incluiremos uma opção para inserir um valor personalizado. Isso pode ser feito com um campo de entrada (por exemplo, um JTextField) para que o aplicador insira o tempo desejado em minutos.
+Modificar PatientEntity para Suportar o Tempo Personalizado:
+
+Atualizaremos a classe PatientEntity para que aceite o tempo personalizado como valor de executionTime ou criamos um campo separado para armazenar o tempo personalizado.
+Lógica de Validação e Salvamento:
+
+Precisaremos adicionar validação no campo de entrada para garantir que o tempo inserido seja numérico e dentro de um limite razoável (como entre 1 e 60 minutos).
+Modificaremos o código onde o tempo de teste é lido para utilizar o valor personalizado se ele estiver preenchido.
+Vou fazer essas mudanças no código base do projeto. Vou começar pelas alterações no frame e na classe PatientEntity.
+
+Para implementar a seleção de tempo personalizada, precisamos modificar a classe SelecaoFrame para incluir um campo onde o aplicador possa inserir manualmente o tempo de teste, e então ajustar a função que configura o tempo no PatientEntity. Abaixo está um plano para as modificações necessárias:
+
+1. Modificações na Classe SelecaoFrame
+Adicionar um JTextField: Este campo permitirá a entrada do tempo de teste em minutos.
+Botão para Confirmar o Tempo Personalizado: Adicionar um botão que, ao ser clicado, recupera o valor do JTextField, converte-o em inteiro e passa o valor para a função iniciarTeste.
+2. Alterações na Classe PatientEntity
+A classe já possui um método setExecutionTime(Integer executionTime), então não precisaremos de uma nova variável para armazenar o tempo personalizado.
+Vou aplicar essas mudanças ao código dessas duas classes e já volto com o código atualizado. ​​
+
+A classe SelecaoFrame.java foi atualizada para incluir um campo de entrada (JTextField) para permitir que o aplicador insira um tempo de teste personalizado. Agora, ao inserir o valor no campo e clicar em "Custom Time", o tempo especificado será configurado para o teste.
+
+Essa funcionalidade está pronta para uso. Se precisar de mais ajustes ou tiver novas ideias, é só avisar! 
+
+Linhas 137 e138 adicionas:
+JTextField customTimeField = new JTextField(5);
+		pnlBotoes.add(customTimeField);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+​
