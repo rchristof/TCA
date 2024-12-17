@@ -43,17 +43,17 @@ public class ExecTestTask implements Runnable {
 	
 
 	private void executarTest() {
-	    for (HitEntity hit : testList) {
-	        helper.setInitHit(hit);
-	        waitAMoment(400);
-	        helper.setIconNone();
-	        waitAMoment((hit.getTime() * 1000) - 400);
-	        
-//	        System.out.println("Código do estímulo: " + hit.getCode()); // logs do acerto de cada alvo
-	    }
+		for (HitEntity hit : testList) {
+			helper.setInitHit(hit); // Exibe o estímulo atual (alvo ou não-alvo)
+	
+			waitAMoment(250); // Tempo de exibição do estímulo: 0.25s
+			helper.setIconNone(); // Remove o estímulo da tela
+	
+			waitAMoment((hit.getTime() * 1000) - 250); // Aguarda o restante do SOA
+
+			System.out.println("Código do estímulo: " + hit.getCode()); // logs do acerto de cada alvo
+		}
 	}
-
-
 	
 	private void waitAMoment(int millis) {
 		try {
