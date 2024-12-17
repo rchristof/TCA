@@ -1,5 +1,11 @@
 package br.com.guardiaosistemas.tca.execucao.frames;
 
+import br.com.guardiaosistemas.tca.execucao.delegate.ExecuteDelegate;
+import br.com.guardiaosistemas.tca.execucao.frames.helper.DataTestHelper;
+import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
+import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
+import br.com.guardiaosistemas.tca.execucao.model.entity.TestEntity;
+import bundle.Msg;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -12,7 +18,6 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,17 +25,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-
-import br.com.guardiaosistemas.tca.execucao.delegate.ExecuteDelegate;
-import br.com.guardiaosistemas.tca.execucao.frames.helper.DataTestHelper;
-import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
-import br.com.guardiaosistemas.tca.execucao.model.entity.PatientEntity;
-import br.com.guardiaosistemas.tca.execucao.model.entity.TestEntity;
-import bundle.Msg;
 
 public class SelecaoFrame extends JDialog {
 
@@ -125,11 +122,11 @@ public class SelecaoFrame extends JDialog {
 		pnlBotoes.setBackground(SystemColor.control);
 		pnlBotoes.setLayout(new GridLayout(4, 5, 0, 5));
 		
-		JButton btn80Frequencia = new JButton("80% Frequencia");
+		JButton btn80Frequencia = new JButton("80% " + Msg.get("selecao.freq"));
 		btn80Frequencia.addActionListener(e -> frequency = 80);
 		pnlBotoes.add(btn80Frequencia);
 		
-		JButton btn20Frequencia = new JButton("20% Frequencia");
+		JButton btn20Frequencia = new JButton("20% " + Msg.get("selecao.freq"));
 		btn20Frequencia.addActionListener(e -> frequency = 20);
 		pnlBotoes.add(btn20Frequencia);
 		
@@ -147,15 +144,15 @@ public class SelecaoFrame extends JDialog {
 		btn4Tempo.addActionListener(e -> soa = 4);
 		pnlBotoes.add(btn4Tempo);
 		
-		JButton btn24Alvos = new JButton("24 Alvos");
+		JButton btn24Alvos = new JButton("24 " + Msg.get("selecao.alvos"));
 		btn24Alvos.addActionListener(e -> totalAlvos = 24);
 		pnlBotoes.add(btn24Alvos);
 		
-		JButton btn48Alvos = new JButton("48 Alvos");
+		JButton btn48Alvos = new JButton("48 " + Msg.get("selecao.alvos"));
 		btn48Alvos.addActionListener(e -> totalAlvos = 48);
 		pnlBotoes.add(btn48Alvos);
 		
-		JButton btn72Alvos = new JButton("72 Alvos");
+		JButton btn72Alvos = new JButton("72 " + Msg.get("selecao.alvos"));
 		btn72Alvos.addActionListener(e -> totalAlvos = 72);
 		pnlBotoes.add(btn72Alvos);
 		
