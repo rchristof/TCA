@@ -1,72 +1,545 @@
 package br.com.guardiaosistemas.tca.execucao.frames.helper;
 
+import br.com.guardiaosistemas.tca.execucao.consts.C;
+import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import br.com.guardiaosistemas.tca.execucao.consts.C;
-import br.com.guardiaosistemas.tca.execucao.model.entity.HitEntity;
-
 public class DataTestHelper {
-	
-	public static List<HitEntity> generateStimuliList(int totalItems, int frequency, int soa) {
-	    List<HitEntity> stimuliList = new ArrayList<>();
+    
+    public static List<HitEntity> generateStimuliList(int totalStars, int frequency, int soa) {
+        List<HitEntity> stimuliList = new ArrayList<>();
 
-	    int numTargets = (int) (totalItems * (frequency / 100.0));
-	    int numNonTargets = totalItems - numTargets;
+        int totalItems = (int) Math.round(totalStars * (100.0 / frequency));
+        int numNonTargets = totalItems - totalStars;
 
-	    // Gerar alvos
-	    for (int i = 0; i < numTargets; i++) {
-	        stimuliList.add(new HitEntity(C.T_STAR, soa));
-	    }
+        // Gerar alvos (T_STAR)
+        for (int i = 0; i < totalStars; i++) {
+            stimuliList.add(new HitEntity(C.T_STAR, soa));
+        }
 
-	    // Gerar não-alvos
-	    for (int i = 0; i < numNonTargets; i++) {
-	        stimuliList.add(new HitEntity(C.T_BALLON, soa));
-	    }
+        // Gerar não-alvos (T_BALLON)
+        for (int i = 0; i < numNonTargets; i++) {
+            stimuliList.add(new HitEntity(C.T_BALLON, soa));
+        }
 
-	    Collections.shuffle(stimuliList);
-	    return stimuliList;
+        Collections.shuffle(stimuliList);
+        return stimuliList;
+    }
+    
+    public static List<HitEntity> getExample() {
+        List<HitEntity> exampleList = new ArrayList<>();
+
+        exampleList.add(new HitEntity(C.T_STAR, 2));
+        exampleList.get(0).setHit(true);
+        exampleList.get(0).setSpeed(450);
+
+        exampleList.add(new HitEntity(C.T_BALLON, 2));
+        exampleList.get(1).setHit(false);
+
+        exampleList.add(new HitEntity(C.T_STAR, 2));
+        exampleList.get(2).setHit(false);
+
+        exampleList.add(new HitEntity(C.T_BALLON, 2));
+        exampleList.get(3).setHit(false);
+
+        return exampleList;
+    }
+
+	public static List<HitEntity> getTestList1M30S() {
+		List<HitEntity> test1M30S = new ArrayList<>();
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		test1M30S.add(new HitEntity(C.T_STAR, 1));
+		test1M30S.add(new HitEntity(C.T_BALLON, 1));
+		
+		return test1M30S;
 	}
 	
-	public static List<HitEntity> getExample() {
-	    List<HitEntity> exampleList = new ArrayList<>();
+	public static List<HitEntity> getTestList5M() {
+		List<HitEntity> test5M = new ArrayList<>();
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_BALLON, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 2));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_BALLON, 1));
+		test5M.add(new HitEntity(C.T_STAR, 1));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_BALLON, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
+		test5M.add(new HitEntity(C.T_STAR, 4));
 
-	    exampleList.add(new HitEntity(C.T_STAR, 2));
-	    exampleList.get(0).setHit(true);
-	    exampleList.get(0).setSpeed(450);
-
-	    exampleList.add(new HitEntity(C.T_BALLON, 2));
-	    exampleList.get(1).setHit(false);
-
-	    exampleList.add(new HitEntity(C.T_STAR, 2));
-	    exampleList.get(2).setHit(false);
-
-	    exampleList.add(new HitEntity(C.T_BALLON, 2));
-	    exampleList.get(3).setHit(false);
-
-	    return exampleList;
+		return test5M;
+	}
+	
+	public static List<HitEntity> getTestList10M() {
+		List<HitEntity> test10M = new ArrayList<>(getTestList5M());
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_BALLON, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 2));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_BALLON, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 1));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		test10M.add(new HitEntity(C.T_BALLON, 4));
+		test10M.add(new HitEntity(C.T_STAR, 4));
+		
+		return test10M;
+	}
+	
+	public static List<HitEntity> getTestList15M() {
+		List<HitEntity> test15M = new ArrayList<>(getTestList10M());
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_BALLON, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 2));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_BALLON, 1));
+		test15M.add(new HitEntity(C.T_STAR, 1));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_BALLON, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		test15M.add(new HitEntity(C.T_STAR, 4));
+		
+		return test15M;
 	}
 
-	//funçao para teste da lista de alvos
-	public static void main(String[] args) {
-	    int totalAlvos = 48;  // teste com: 48 alvos, 80% e 2s
-	    int frequency = 80;
-	    int soa = 2;
+    //funçao para teste da lista de alvos
+    public static void main(String[] args) {
+        int totalStars = 24;  // queremos 24 estrelas que representam 80% do total
+        int frequency = 80;
+        int soa = 2;
 
-	    List<HitEntity> stimuliList = generateStimuliList(totalAlvos, frequency, soa);
+        List<HitEntity> stimuliList = generateStimuliList(totalStars, frequency, soa);
 
-	    System.out.println("Parâmetros do Teste:");
-	    System.out.println("Total de Alvos: " + totalAlvos);
-	    System.out.println("Frequência: " + frequency + "%");
-	    System.out.println("SOA (Tempo entre estímulos): " + soa + "s");
-	    System.out.println("Total de Estímulos: " + stimuliList.size());
+        System.out.println("Parâmetros do Teste:");
+        System.out.println("Total de Estrelas (T_STAR): " + totalStars);
+        System.out.println("Frequência: " + frequency + "%");
+        System.out.println("SOA (Tempo entre estímulos): " + soa + "s");
+        System.out.println("Total de Estímulos: " + stimuliList.size());
 
-	    System.out.println("\nLista de Estímulos Gerada:");
-	    int index = 1;
-	    for (HitEntity hit : stimuliList) {
-	        System.out.println(index++ + ". " + hit);
-	    }
-	}
+        System.out.println("\nLista de Estímulos Gerada:");
+        int index = 1;
+        for (HitEntity hit : stimuliList) {
+            System.out.println(index++ + ". " + hit);
+        }
+    }
 
 }
